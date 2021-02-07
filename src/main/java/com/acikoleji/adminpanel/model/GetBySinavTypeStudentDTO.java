@@ -1,13 +1,15 @@
 package com.acikoleji.adminpanel.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class GetBySinavTypeStudentDTO extends GetBySinavTypeBaseModelDTO{
 	
 	private static final long serialVersionUID = 5015526435495011017L;
 
 	private String schoolName;
-	private Date birthDate;
+	private LocalDate birthDate;
 	private String tcNo;
 	private GetBySinavTypeVeliDTO veli;
 	
@@ -17,10 +19,11 @@ public class GetBySinavTypeStudentDTO extends GetBySinavTypeBaseModelDTO{
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
 	}
-	public Date getBirthDate() {
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 	public String getTcNo() {

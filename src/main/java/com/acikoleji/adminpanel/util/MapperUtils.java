@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.acikoleji.adminpanel.entity.Sinav;
 import com.acikoleji.adminpanel.entity.Student;
-import com.acikoleji.adminpanel.entity.Sınav;
 import com.acikoleji.adminpanel.entity.Veli;
 import com.acikoleji.adminpanel.model.GetBySinavTypeStudentDTO;
 import com.acikoleji.adminpanel.model.GetBySinavTypeVeliDTO;
@@ -16,8 +16,8 @@ import com.acikoleji.adminpanel.model.VeliDTO;
 
 public class MapperUtils {
 
-	public static Sınav mapToSinav(SınavDTO sinavDTO) {
-		Sınav sinav = new Sınav();
+	public static Sinav mapToSinav(SınavDTO sinavDTO) {
+		Sinav sinav = new Sinav();
 		sinav.setStartDate(sinavDTO.getStartDate());
 		sinav.setEndDate(sinavDTO.getEndDate());
 		sinav.setTipi(sinavDTO.getTipi());
@@ -67,7 +67,7 @@ public class MapperUtils {
 		return students.stream().map(s -> mapToStudentDTO(s)).collect(Collectors.toList());
 	}
 
-	public static SınavDTO mapToSinavDTO(Sınav sinav) {
+	public static SınavDTO mapToSinavDTO(Sinav sinav) {
 		SınavDTO sinavDTO = new SınavDTO();
 		sinavDTO.setStartDate(sinav.getStartDate());
 		sinavDTO.setEndDate(sinav.getEndDate());
@@ -76,11 +76,11 @@ public class MapperUtils {
 		return sinavDTO;
 	}
 	
-	public static List<SınavDTO> mapToSinavDTOs(List<Sınav> sinavs) {
+	public static List<SınavDTO> mapToSinavDTOs(List<Sinav> sinavs) {
 		return sinavs.stream().map(s -> mapToSinavDTO(s)).collect(Collectors.toList());
 	}
 
-	public static Collection<? extends Sınav> mapToSinavs(List<SınavDTO> activeExamns) {
+	public static Collection<? extends Sinav> mapToSinavs(List<SınavDTO> activeExamns) {
 		return activeExamns.stream().map(s -> mapToSinav(s)).collect(Collectors.toList());
 	}
 

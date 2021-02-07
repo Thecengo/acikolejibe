@@ -3,7 +3,7 @@ package com.acikoleji.adminpanel.service;
 import java.util.Date;
 import java.util.List;
 
-import com.acikoleji.adminpanel.entity.Sınav;
+import com.acikoleji.adminpanel.entity.Sinav;
 import com.acikoleji.adminpanel.model.GetSinavByTypeDTO;
 import com.acikoleji.adminpanel.model.StudentDTO;
 import com.acikoleji.adminpanel.model.SınavDTO;
@@ -21,7 +21,7 @@ public interface SinavService {
 
 	List<SınavDTO> findActiveExamns(Date date);
 	
-	List<Sınav> findActiveSinav(Date date);
+	List<Sinav> findActiveSinav(Date date);
 	
 	Response createSinav(SınavDTO sinavDTO);
 	

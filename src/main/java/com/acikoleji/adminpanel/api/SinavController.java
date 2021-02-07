@@ -17,6 +17,8 @@ import com.acikoleji.adminpanel.model.GetBySinavTypeStudentDTO;
 import com.acikoleji.adminpanel.model.SınavDTO;
 import com.acikoleji.adminpanel.response.Response;
 import com.acikoleji.adminpanel.service.SinavService;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 
 @RequestMapping("/sinav")
 @RestController
@@ -35,6 +37,7 @@ public class SinavController {
 	}
 	
 	@GetMapping("/{type}")
+	@JsonDeserialize(using = LocalDateDeserializer.class)
 	public List<String> getStudentsNameBySinavType(@PathVariable("type") String type) {
 		return sinavService.findBySinavType(type).getStudents().stream()
 				.map(s -> s.getName())
