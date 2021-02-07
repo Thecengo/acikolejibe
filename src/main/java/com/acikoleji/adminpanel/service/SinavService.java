@@ -1,6 +1,6 @@
 package com.acikoleji.adminpanel.service;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.acikoleji.adminpanel.entity.Sinav;
@@ -19,9 +19,9 @@ public interface SinavService {
 	
 	Boolean isExistActiveExams();
 
-	List<SınavDTO> findActiveExamns(Date date);
+	List<SınavDTO> findActiveExamns(LocalDate date);
 	
-	List<Sinav> findActiveSinav(Date date);
+	List<Sinav> findActiveSinav(LocalDate date);
 	
 	Response createSinav(SınavDTO sinavDTO);
 	

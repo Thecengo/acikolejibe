@@ -1,6 +1,6 @@
 package com.acikoleji.adminpanel.repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,6 +16,6 @@ public interface SinavRepository extends JpaRepository<Sinav, Long> {
 	Sinav findByTipi(String type);
 	
 	@Query("SELECT s from Sinav s where s.startDate <=:today and s.endDate >=:today")
-	List<Sinav>findActiveExamns(@Param("today") Date date);
+	List<Sinav>findActiveExamns(@Param("today") LocalDate date);
 	
 }

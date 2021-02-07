@@ -1,9 +1,8 @@
 package com.acikoleji.adminpanel.repository;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,7 @@ class SinavRepositoryTest2 {
 	@Test
 	void activeSinavOlmali() {
 		
-		List<Sinav> findActiveExamns = sinavRepository.findActiveExamns(new Date());
+		List<Sinav> findActiveExamns = sinavRepository.findActiveExamns(LocalDate.now());
 		findActiveExamns.stream().map(s -> s.getTipi()).forEach(System.out::println);
 		
 	}

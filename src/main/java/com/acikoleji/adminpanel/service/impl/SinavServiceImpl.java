@@ -1,15 +1,15 @@
 package com.acikoleji.adminpanel.service.impl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.acikoleji.adminpanel.entity.Student;
 import com.acikoleji.adminpanel.entity.Sinav;
+import com.acikoleji.adminpanel.entity.Student;
 import com.acikoleji.adminpanel.model.GetSinavByTypeDTO;
 import com.acikoleji.adminpanel.model.StudentDTO;
 import com.acikoleji.adminpanel.model.SınavDTO;
@@ -38,7 +38,7 @@ public class SinavServiceImpl implements SinavService {
 	}
 
 	@Override
-	public List<SınavDTO> findActiveExamns(Date date) {
+	public List<SınavDTO> findActiveExamns(LocalDate date) {
 		List<Sinav> activeExamns = sinavRepository.findActiveExamns(date);
 		if (!activeExamns.isEmpty()) {
 			List<SınavDTO> sinavDTOs = new ArrayList<>();
@@ -107,7 +107,7 @@ public class SinavServiceImpl implements SinavService {
 
 	@Override
 	public Boolean isExistActiveExams() {
-		List<Sinav> findActiveExamns = sinavRepository.findActiveExamns(new Date());
+		List<Sinav> findActiveExamns = sinavRepository.findActiveExamns(LocalDate.now());
 		return !findActiveExamns.isEmpty();
 	}
 
@@ -128,7 +128,7 @@ public class SinavServiceImpl implements SinavService {
 	}
 
 	@Override
-	public List<Sinav> findActiveSinav(Date date) {
+	public List<Sinav> findActiveSinav(LocalDate date) {
 		return sinavRepository.findActiveExamns(date);
 	}
 }
