@@ -8,6 +8,7 @@ public class StudentDTO extends BaseModelDTO{
 	private static final long serialVersionUID = 5015526435495011017L;
 
 	private String schoolName;
+	private String sinif;
 	private LocalDate birthDate;
 	private String tcNo;
 	private VeliDTO veli;
@@ -18,6 +19,13 @@ public class StudentDTO extends BaseModelDTO{
 	}
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
+	}
+	
+	public String getSinif() {
+		return sinif;
+	}
+	public void setSinif(String sinif) {
+		this.sinif = sinif;
 	}
 	public LocalDate getBirthDate() {
 		return birthDate;

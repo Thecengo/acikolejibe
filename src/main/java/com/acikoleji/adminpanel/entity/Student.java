@@ -20,6 +20,9 @@ public class Student extends BaseEntity{
 	@Column(name= "school_name", nullable = false)
 	private String schoolName;
 	
+	@Column(name= "sinif", nullable = false)
+	private String sinif;
+	
 	@Column(name = "birthday", columnDefinition = "DATE")
 	private LocalDate birthDate;
 	
@@ -38,6 +41,14 @@ public class Student extends BaseEntity{
 
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
+	}
+
+	public String getSinif() {
+		return sinif;
+	}
+
+	public void setSinif(String sinif) {
+		this.sinif = sinif;
 	}
 
 	public LocalDate getBirthDate() {

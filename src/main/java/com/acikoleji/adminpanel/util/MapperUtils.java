@@ -30,6 +30,7 @@ public class MapperUtils {
 		student.setName(studentDTO.getName());
 		student.setSchoolName(studentDTO.getSchoolName());
 		student.setTcNo(studentDTO.getSchoolName());
+		student.setSinif(studentDTO.getSinif());
 		student.setTelNo(studentDTO.getTelNo());
 		student.setVeli(Objects.nonNull(studentDTO.getVeli())?mapToVeli(studentDTO.getVeli()) : null);
 		return student;
@@ -48,6 +49,7 @@ public class MapperUtils {
 		studentDTO.setBirthDate(student.getBirthDate());
 		studentDTO.setName(student.getName());
 		studentDTO.setSchoolName(student.getSchoolName());
+		studentDTO.setSinif(student.getSinif());
 		studentDTO.setTcNo(student.getSchoolName());
 		studentDTO.setTelNo(student.getTelNo());
 		studentDTO.setVeli(mapToVeliDTO(student.getVeli()));

@@ -9,6 +9,7 @@ public class GetBySinavTypeStudentDTO extends GetBySinavTypeBaseModelDTO{
 	private static final long serialVersionUID = 5015526435495011017L;
 
 	private String schoolName;
+	private String sinif;
 	private LocalDate birthDate;
 	private String tcNo;
 	private GetBySinavTypeVeliDTO veli;
@@ -18,6 +19,13 @@ public class GetBySinavTypeStudentDTO extends GetBySinavTypeBaseModelDTO{
 	}
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
+	}
+	
+	public String getSinif() {
+		return sinif;
+	}
+	public void setSinif(String sinif) {
+		this.sinif = sinif;
 	}
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	public LocalDate getBirthDate() {
