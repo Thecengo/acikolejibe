@@ -1,15 +1,15 @@
 package com.acikoleji.adminpanel.service.impl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.acikoleji.adminpanel.entity.Sinav;
 import com.acikoleji.adminpanel.entity.Student;
-import com.acikoleji.adminpanel.entity.Sınav;
 import com.acikoleji.adminpanel.model.GetSinavByTypeDTO;
 import com.acikoleji.adminpanel.model.StudentDTO;
 import com.acikoleji.adminpanel.model.SınavDTO;
@@ -33,16 +33,16 @@ public class SinavServiceImpl implements SinavService {
 
 	@Override
 	public GetSinavByTypeDTO findBySinavType(String type) {
-		Sınav sinav = sinavRepository.findByTipi(type);
+		Sinav sinav = sinavRepository.findByTipi(type);
 		return new GetSinavByTypeDTO(MapperUtils.mapToGetSinavByTypeSTudentDTOs(sinav.getStudents()));
 	}
 
 	@Override
-	public List<SınavDTO> findActiveExamns(Date date) {
-		List<Sınav> activeExamns = sinavRepository.findActiveExamns(date);
+	public List<SınavDTO> findActiveExamns(LocalDate date) {
+		List<Sinav> activeExamns = sinavRepository.findActiveExamns(date);
 		if (!activeExamns.isEmpty()) {
 			List<SınavDTO> sinavDTOs = new ArrayList<>();
-			for (Sınav sınav : activeExamns) {
+			for (Sinav sınav : activeExamns) {
 				sinavDTOs.add(MapperUtils.mapToSinavDTO(sınav));
 			}
 			return sinavDTOs;
@@ -53,10 +53,10 @@ public class SinavServiceImpl implements SinavService {
 
 	@Override
 	public Response createSinav(SınavDTO sinavDTO) {
-		Sınav findBySinavType = sinavRepository.findByTipi(sinavDTO.getTipi());
+		Sinav findBySinavType = sinavRepository.findByTipi(sinavDTO.getTipi());
 		Response sinavResponse = new CreateSinavResponse();
 		if (CheckUtils.isNull(findBySinavType)) {
-			Sınav savedSinav = sinavRepository.save(MapperUtils.mapToSinav(sinavDTO));
+			Sinav savedSinav = sinavRepository.save(MapperUtils.mapToSinav(sinavDTO));
 			if (CheckUtils.isNotNull(savedSinav)) {
 				sinavResponse.setSuccess(Boolean.TRUE);
 				sinavResponse.setMessage(savedSinav.getTipi() + " basari ile olusturulmustur");
@@ -74,10 +74,10 @@ public class SinavServiceImpl implements SinavService {
 
 	@Override
 	public Response updateSinav(SınavDTO sinavDTO) {
-		Sınav findBySinavType = sinavRepository.findByTipi(sinavDTO.getTipi());
+		Sinav findBySinavType = sinavRepository.findByTipi(sinavDTO.getTipi());
 		Response sinavResponse = new UpdateSinavResponse();
 		if (CheckUtils.isNotNull(findBySinavType)) {
-			Sınav savedSinav = sinavRepository.save(MapperUtils.mapToSinav(sinavDTO));
+			Sinav savedSinav = sinavRepository.save(MapperUtils.mapToSinav(sinavDTO));
 			if (CheckUtils.isNotNull(savedSinav)) {
 				sinavResponse.setSuccess(Boolean.TRUE);
 				sinavResponse.setMessage(savedSinav.getTipi() + " basari ile guncellenmistir");
@@ -92,7 +92,7 @@ public class SinavServiceImpl implements SinavService {
 	@Override
 	public Response deleteSinav(Long id) {
 		Response sinavResponse = new DeleteSinavResponse();
-		Optional<Sınav> findById = sinavRepository.findById(id);
+		Optional<Sinav> findById = sinavRepository.findById(id);
 		if (findById.isPresent()) {
 			sinavRepository.delete(findById.get());
 			sinavResponse.setSuccess(Boolean.TRUE);
@@ -107,14 +107,14 @@ public class SinavServiceImpl implements SinavService {
 
 	@Override
 	public Boolean isExistActiveExams() {
-		List<Sınav> findActiveExamns = sinavRepository.findActiveExamns(new Date());
+		List<Sinav> findActiveExamns = sinavRepository.findActiveExamns(LocalDate.now());
 		return !findActiveExamns.isEmpty();
 	}
 
 	@Override
 	public List<StudentDTO> findStudentsByType(String type) {
 		List<StudentDTO>  studentDTOs = new ArrayList<>();
-		Sınav sinav = sinavRepository.findByTipi(type);
+		Sinav sinav = sinavRepository.findByTipi(type);
 		List<Student> students = sinav.getStudents();
 		for (Student student : students) {
 			studentDTOs.add(MapperUtils.mapToStudentDTO(student));
@@ -128,7 +128,7 @@ public class SinavServiceImpl implements SinavService {
 	}
 
 	@Override
-	public List<Sınav> findActiveSinav(Date date) {
+	public List<Sinav> findActiveSinav(LocalDate date) {
 		return sinavRepository.findActiveExamns(date);
 	}
 }

@@ -1,15 +1,15 @@
 package com.acikoleji.adminpanel.service.impl;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.acikoleji.adminpanel.entity.Sinav;
 import com.acikoleji.adminpanel.entity.Student;
-import com.acikoleji.adminpanel.entity.Sınav;
 import com.acikoleji.adminpanel.model.StudentDTO;
 import com.acikoleji.adminpanel.repository.SinavRepository;
 import com.acikoleji.adminpanel.repository.StudentRepository;
@@ -65,10 +65,10 @@ public class StudentServiceImpl implements StudentService {
 	public StudentResponse sinavaBasvuruYap(StudentDTO studentDTO) {
 		StudentResponse studentResponse = new StudentResponse();
 		if (CheckUtils.isNotNull(studentDTO)) {
-			List<Sınav> activeExamns = sinavService.findActiveSinav(new Date());
+			List<Sinav> activeExamns = sinavService.findActiveSinav(LocalDate.now());
 			if (CheckUtils.isNotEmpty(activeExamns)) {
 				if (!activeExamns.isEmpty()) {
-				    Sınav sınav = activeExamns.get(0);
+				    Sinav sınav = activeExamns.get(0);
 					sınav.getStudents().add(MapperUtils.mapToStudent(studentDTO));
 					sinavRepository.save(sınav);
 					if (CheckUtils.isNotNull(sınav)) {

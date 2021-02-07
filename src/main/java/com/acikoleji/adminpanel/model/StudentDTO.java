@@ -1,6 +1,6 @@
 package com.acikoleji.adminpanel.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class StudentDTO extends BaseModelDTO{
@@ -8,7 +8,7 @@ public class StudentDTO extends BaseModelDTO{
 	private static final long serialVersionUID = 5015526435495011017L;
 
 	private String schoolName;
-	private Date birthDate;
+	private LocalDate birthDate;
 	private String tcNo;
 	private VeliDTO veli;
 	private List<SınavDTO> sinavs;
@@ -19,10 +19,10 @@ public class StudentDTO extends BaseModelDTO{
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
 	}
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
-	public void setBirthDate(Date birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 	public String getTcNo() {

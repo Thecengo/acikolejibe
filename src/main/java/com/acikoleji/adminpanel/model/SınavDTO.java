@@ -1,14 +1,14 @@
 package com.acikoleji.adminpanel.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class SınavDTO {
 
 	private Long id;
 	private String tipi;
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	private List<StudentDTO> students; 
 	
 	public Long getId() {
@@ -23,16 +23,16 @@ public class SınavDTO {
 	public void setTipi(String tipi) {
 		this.tipi = tipi;
 	}
-	public Date getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
-	public Date getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 	public List<StudentDTO> getStudents() {
