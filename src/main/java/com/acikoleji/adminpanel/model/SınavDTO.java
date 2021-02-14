@@ -3,11 +3,15 @@ package com.acikoleji.adminpanel.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class SınavDTO {
 
 	private Long id;
 	private String tipi;
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate startDate;
+	@JsonFormat(pattern = "dd-MM-yyyy")
 	private LocalDate endDate;
 	private List<StudentDTO> students; 
 	

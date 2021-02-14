@@ -3,6 +3,7 @@ package com.acikoleji.adminpanel.service;
 import java.util.List;
 
 import com.acikoleji.adminpanel.model.StudentDTO;
+import com.acikoleji.adminpanel.request.RequstStudentApplication;
 import com.acikoleji.adminpanel.response.StudentResponse;
 
 public interface StudentService {
@@ -11,6 +12,6 @@ public interface StudentService {
 	StudentResponse create(StudentDTO student);
 	StudentResponse update(StudentDTO student);
 	StudentResponse delete(Long id);
-	StudentResponse sinavaBasvuruYap(StudentDTO student);
+	StudentResponse sinavaBasvuruYap(RequstStudentApplication student);
 	
 }

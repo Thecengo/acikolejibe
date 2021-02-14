@@ -9,7 +9,6 @@ public class StudentDTO extends BaseModelDTO{
 
 	private String schoolName;
 	private String sinif;
-	private LocalDate birthDate;
 	private String tcNo;
 	private VeliDTO veli;
 	private List<SınavDTO> sinavs;
@@ -26,12 +25,6 @@ public class StudentDTO extends BaseModelDTO{
 	}
 	public void setSinif(String sinif) {
 		this.sinif = sinif;
-	}
-	public LocalDate getBirthDate() {
-		return birthDate;
-	}
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
 	}
 	public String getTcNo() {
 		return tcNo;

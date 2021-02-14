@@ -17,6 +17,8 @@ public interface SinavService {
 	
 	GetSinavByTypeDTO findBySinavType(String type);
 	
+	Sinav findBySinavTypeForApply(String type);
+	
 	Boolean isExistActiveExams();
 
 	List<SınavDTO> findActiveExamns(LocalDate date);

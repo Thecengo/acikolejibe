@@ -26,7 +26,6 @@ public class MapperUtils {
 
 	public static Student mapToStudent(StudentDTO studentDTO) {
 		Student student = new Student();
-		student.setBirthDate(studentDTO.getBirthDate());
 		student.setName(studentDTO.getName());
 		student.setSchoolName(studentDTO.getSchoolName());
 		student.setTcNo(studentDTO.getSchoolName());
@@ -46,7 +45,6 @@ public class MapperUtils {
 
 	public static StudentDTO mapToStudentDTO(Student student) {
 		StudentDTO studentDTO = new StudentDTO();
-		studentDTO.setBirthDate(student.getBirthDate());
 		studentDTO.setName(student.getName());
 		studentDTO.setSchoolName(student.getSchoolName());
 		studentDTO.setSinif(student.getSinif());
@@ -92,7 +90,6 @@ public class MapperUtils {
 
 	public static GetBySinavTypeStudentDTO mapToGetSinavByTypeStudentDTO(Student student) {
 		GetBySinavTypeStudentDTO getBySinavTypeStudentDTO = new GetBySinavTypeStudentDTO();
-		getBySinavTypeStudentDTO.setBirthDate(student.getBirthDate());
 		getBySinavTypeStudentDTO.setName(student.getName());
 		getBySinavTypeStudentDTO.setSchoolName(student.getSchoolName());
 		getBySinavTypeStudentDTO.setTcNo(student.getSchoolName());

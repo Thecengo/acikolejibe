@@ -131,4 +131,9 @@ public class SinavServiceImpl implements SinavService {
 	public List<Sinav> findActiveSinav(LocalDate date) {
 		return sinavRepository.findActiveExamns(date);
 	}
+
+	@Override
+	public Sinav findBySinavTypeForApply(String type) {
+		return sinavRepository.findByTipi(type);
+	}
 }

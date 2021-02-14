@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.acikoleji.adminpanel.model.StudentDTO;
+import com.acikoleji.adminpanel.request.RequstStudentApplication;
 import com.acikoleji.adminpanel.response.StudentResponse;
 import com.acikoleji.adminpanel.service.StudentService;
 
@@ -29,7 +30,7 @@ public class StudentController {
 	}
 
 	@PostMapping
-	public StudentResponse sinavaBasvuruYap(@RequestBody StudentDTO studentDTO) {
+	public StudentResponse sinavaBasvuruYap(@RequestBody RequstStudentApplication studentDTO) {
 		return studentService.sinavaBasvuruYap(studentDTO);
 	}
 }

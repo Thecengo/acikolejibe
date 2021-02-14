@@ -1,6 +1,5 @@
 package com.acikoleji.adminpanel.entity;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,9 +23,6 @@ public class Student extends BaseEntity{
 	@Column(name= "sinif", nullable = false)
 	private String sinif;
 	
-	@Column(name = "birthday", columnDefinition = "DATE")
-	private LocalDate birthDate;
-	
 	@Column(name = "tc_no", nullable = false, length = 11)
 	private String tcNo;
 	
@@ -34,7 +31,7 @@ public class Student extends BaseEntity{
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "students")
 	private List<Sinav> sinavs;
-
+	
 	public String getSchoolName() {
 		return schoolName;
 	}
@@ -49,14 +46,6 @@ public class Student extends BaseEntity{
 
 	public void setSinif(String sinif) {
 		this.sinif = sinif;
-	}
-
-	public LocalDate getBirthDate() {
-		return birthDate;
-	}
-
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
 	}
 
 	public String getTcNo() {
