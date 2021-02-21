@@ -1,8 +1,10 @@
 package com.acikoleji.adminpanel.service.impl;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 
@@ -14,6 +16,7 @@ import com.acikoleji.adminpanel.model.StudentDTO;
 import com.acikoleji.adminpanel.repository.SinavRepository;
 import com.acikoleji.adminpanel.repository.StudentRepository;
 import com.acikoleji.adminpanel.request.RequstStudentApplication;
+import com.acikoleji.adminpanel.response.ResponseStudentApplyed;
 import com.acikoleji.adminpanel.response.StudentResponse;
 import com.acikoleji.adminpanel.service.SinavService;
 import com.acikoleji.adminpanel.service.StudentService;
@@ -36,6 +39,18 @@ public class StudentServiceImpl implements StudentService {
 			studentDTO.setTelNo(request.getTelNo());
 			studentDTO.setVeli(request.getVeli());
 			return studentDTO;
+		}
+
+		public static ResponseStudentApplyed mapToResponseStudentApplied(Student student) {
+			ResponseStudentApplyed response = new ResponseStudentApplyed();
+			response.setStudentName(student.getName());
+			response.setSchoolName(student.getSchoolName());
+			response.setTcNo(student.getTcNo());
+			response.setStudentTelNo(student.getTelNo());
+			response.setSinif(student.getSinif());
+			response.setVeliAdi(student.getVeli().getName());
+			response.setVeliTelNo(student.getVeli().getTelNo());
+			return response;
 		}
 		
 	}
@@ -101,5 +116,11 @@ public class StudentServiceImpl implements StudentService {
 
 		}
 		return studentResponse;
+	}
+
+	@Override
+	public List<ResponseStudentApplyed> findBySinavTypeAndSessionStartTime(String burs, LocalTime startTime) {
+		List<Student> students = studentRepository.findBySinavsTipiAndSinavsSessionsStartTime(burs, startTime);
+		return students.stream().map(s -> Mapper.mapToResponseStudentApplied(s)).collect(Collectors.toList());
 	}
 }

@@ -1,6 +1,9 @@
 package com.acikoleji.adminpanel.repository;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -11,31 +14,23 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.acikoleji.adminpanel.entity.Session;
+import com.acikoleji.adminpanel.entity.Student;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-class SessionRepositoryTest {
+class StudentRepositoryTest {
 
 	@Autowired
 	private TestEntityManager entityManager;
 
 	@Autowired
-	private SessionRepository sessionRepository;
-	
+	private StudentRepository studentRepository;
 	@Test
 	void test() {
-		List<Session> sessions = sessionRepository.findBySinavTipi("Kolej Bursluk Sınavı-20 Mart 2021");
-		sessions.forEach(System.out::println);
-		
-	}
-	
-	@Test
-	void sessionZamaniVerinceBirTaneSessionBulabilmeli() {
-		Session session = sessionRepository.findByStartTime(LocalTime.of(12, 00));
-		System.out.println(session.getStartTime());
-		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		List<Student> students = studentRepository.findBySinavsTipiAndSinavsSessionsStartTime("burs",LocalTime.parse("10:00", formatter));
+		students.forEach(System.out::println);
 	}
 
 }
