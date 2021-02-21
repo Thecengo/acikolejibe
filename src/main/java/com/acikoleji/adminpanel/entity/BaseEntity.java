@@ -20,7 +20,7 @@ public class BaseEntity implements Serializable{
 	@Column(name ="name", nullable = false, length = 40)
 	private String name;
 	
-	@Column(name = "tel_no", nullable = true, length = 11)
+	@Column(name = "tel_no", nullable = true, length = 20)
 	private String telNo;
 
 	public Long getId() {

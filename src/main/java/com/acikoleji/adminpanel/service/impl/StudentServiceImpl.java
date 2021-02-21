@@ -35,7 +35,7 @@ public class StudentServiceImpl implements StudentService {
 			studentDTO.setName(request.getName());
 			studentDTO.setSchoolName(request.getSchoolName());
 			studentDTO.setSinif(request.getSinif());
-			studentDTO.setTcNo(request.getTcNo());
+			studentDTO.setTcNo(request.getTcNo().trim());
 			studentDTO.setTelNo(request.getTelNo());
 			studentDTO.setVeli(request.getVeli());
 			return studentDTO;

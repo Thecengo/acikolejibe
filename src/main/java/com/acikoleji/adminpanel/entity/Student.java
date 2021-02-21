@@ -23,7 +23,7 @@ public class Student extends BaseEntity{
 	@Column(name= "sinif", nullable = false)
 	private String sinif;
 	
-	@Column(name = "tc_no", nullable = false, length = 11)
+	@Column(name = "tc_no", nullable = false, length = 20)
 	private String tcNo;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
