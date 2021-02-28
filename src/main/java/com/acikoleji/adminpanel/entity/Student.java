@@ -1,5 +1,6 @@
 package com.acikoleji.adminpanel.entity;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -8,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +31,9 @@ public class Student extends BaseEntity{
 	
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "students")
 	private List<Sinav> sinavs;
+	
+	@Column(name = "exam_time", columnDefinition = "TIME")
+	private LocalTime examTime;
 	
 	public String getSchoolName() {
 		return schoolName;
@@ -71,5 +74,15 @@ public class Student extends BaseEntity{
 	public void setSinavs(List<Sinav> sinavs) {
 		this.sinavs = sinavs;
 	}
+
+	public LocalTime getExamTime() {
+		return examTime;
+	}
+
+	public void setExamTime(LocalTime examTime) {
+		this.examTime = examTime;
+	}
+	
+	
 	
 }

@@ -9,7 +9,6 @@ import com.acikoleji.adminpanel.entity.Student;
 
 public interface StudentRepository extends JpaRepository<Student, Long> {
 	
-	List<Student> findBySinavsTipiAndSinavsSessionsStartTime(String type, LocalTime startTime);
-	
+	List<Student> findBySinavsTipiAndExamTime(String type, LocalTime time);
 
 }

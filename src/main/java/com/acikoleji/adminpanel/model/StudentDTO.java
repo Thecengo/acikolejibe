@@ -1,6 +1,7 @@
 package com.acikoleji.adminpanel.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public class StudentDTO extends BaseModelDTO{
@@ -12,6 +13,7 @@ public class StudentDTO extends BaseModelDTO{
 	private String tcNo;
 	private VeliDTO veli;
 	private List<SınavDTO> sinavs;
+	private LocalTime examTime;
 	
 	public String getSchoolName() {
 		return schoolName;
@@ -45,7 +47,11 @@ public class StudentDTO extends BaseModelDTO{
 	public void setSinavs(List<SınavDTO> sinavs) {
 		this.sinavs = sinavs;
 	}
-	
-	
+	public LocalTime getExamTime() {
+		return examTime;
+	}
+	public void setExamTime(LocalTime examTime) {
+		this.examTime = examTime;
+	}
 	
 }

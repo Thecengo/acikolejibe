@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,7 +37,7 @@ public class Sinav {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinav")
 	private List<Session> sessions;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -84,7 +85,5 @@ public class Sinav {
 	public void setSessions(List<Session> sessions) {
 		this.sessions = sessions;
 	}
-	
-	
 
 }

@@ -31,6 +31,7 @@ public class MapperUtils {
 		student.setTcNo(studentDTO.getSchoolName());
 		student.setSinif(studentDTO.getSinif());
 		student.setTelNo(studentDTO.getTelNo());
+		student.setExamTime(studentDTO.getExamTime());
 		student.setVeli(Objects.nonNull(studentDTO.getVeli())?mapToVeli(studentDTO.getVeli()) : null);
 		return student;
 	}

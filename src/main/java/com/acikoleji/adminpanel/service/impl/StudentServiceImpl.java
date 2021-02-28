@@ -38,6 +38,7 @@ public class StudentServiceImpl implements StudentService {
 			studentDTO.setTcNo(request.getTcNo().trim());
 			studentDTO.setTelNo(request.getTelNo());
 			studentDTO.setVeli(request.getVeli());
+			studentDTO.setExamTime(request.getSessionTime());
 			return studentDTO;
 		}
 
@@ -60,6 +61,7 @@ public class StudentServiceImpl implements StudentService {
 	private final SinavService sinavService;
 
 	private final SinavRepository sinavRepository;
+	
 	
 	public StudentServiceImpl(StudentRepository studentRepository, SinavService sinavService,
 			SinavRepository sinavRepository) {
@@ -120,7 +122,7 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public List<ResponseStudentApplyed> findBySinavTypeAndSessionStartTime(String burs, LocalTime startTime) {
-		List<Student> students = studentRepository.findBySinavsTipiAndSinavsSessionsStartTime(burs, startTime);
+		List<Student> students = studentRepository.findBySinavsTipiAndExamTime(burs, startTime);
 		return students.stream().map(s -> Mapper.mapToResponseStudentApplied(s)).collect(Collectors.toList());
 	}
 }

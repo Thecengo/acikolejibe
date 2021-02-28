@@ -1,9 +1,6 @@
 package com.acikoleji.adminpanel.repository;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -28,8 +25,8 @@ class StudentRepositoryTest {
 	private StudentRepository studentRepository;
 	@Test
 	void test() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-		List<Student> students = studentRepository.findBySinavsTipiAndSinavsSessionsStartTime("burs",LocalTime.parse("10:00", formatter));
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		List<Student> students = studentRepository.findBySinavsTipiAndExamTime("burs",LocalTime.parse("09:00"));
 		students.forEach(System.out::println);
 	}
 
