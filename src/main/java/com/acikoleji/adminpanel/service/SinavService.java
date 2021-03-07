@@ -21,9 +21,9 @@ public interface SinavService {
 	
 	Boolean isExistActiveExams();
 
-	List<SınavDTO> findActiveExamns(LocalDate date);
+	List<SınavDTO> findActiveExamns();
 	
-	List<Sinav> findActiveSinav(LocalDate date);
+	List<Sinav> findActiveSinav();
 	
 	Response createSinav(SınavDTO sinavDTO);
 	

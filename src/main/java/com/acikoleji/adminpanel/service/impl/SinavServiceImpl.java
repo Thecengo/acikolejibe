@@ -38,8 +38,8 @@ public class SinavServiceImpl implements SinavService {
 	}
 
 	@Override
-	public List<SınavDTO> findActiveExamns(LocalDate date) {
-		List<Sinav> activeExamns = sinavRepository.findActiveExamns(date);
+	public List<SınavDTO> findActiveExamns() {
+		List<Sinav> activeExamns = sinavRepository.findByStatusNot(SinavStatus.PASSIVE.getStatus());
 		if (!activeExamns.isEmpty()) {
 			List<SınavDTO> sinavDTOs = new ArrayList<>();
 			for (Sinav sınav : activeExamns) {
@@ -107,7 +107,7 @@ public class SinavServiceImpl implements SinavService {
 
 	@Override
 	public Boolean isExistActiveExams() {
-		List<Sinav> findActiveExamns = sinavRepository.findActiveExamns(LocalDate.now());
+		List<Sinav> findActiveExamns = sinavRepository.findByStatusNot(SinavStatus.PASSIVE.getStatus());
 		return !findActiveExamns.isEmpty();
 	}
 
@@ -128,12 +128,34 @@ public class SinavServiceImpl implements SinavService {
 	}
 
 	@Override
-	public List<Sinav> findActiveSinav(LocalDate date) {
-		return sinavRepository.findActiveExamns(date);
+	public List<Sinav> findActiveSinav() {
+		return sinavRepository.findByStatusNot(SinavStatus.PASSIVE.getStatus());
 	}
 
 	@Override
 	public Sinav findBySinavTypeForApply(String type) {
 		return sinavRepository.findByTipi(type);
 	}
+}
+
+enum SinavStatus {
+	ACTIVE("A", "Aktif"),
+	PASSIVE("P", "Pasif");
+
+	private final String status;
+	private final String statusStr;
+
+	SinavStatus(String status, String statusStr) {
+		this.status = status;
+		this.statusStr = statusStr;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public String getStatusStr() {
+		return statusStr;
+	}
+	
 }

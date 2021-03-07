@@ -38,6 +38,9 @@ public class Sinav {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "sinav")
 	private List<Session> sessions;
 	
+	@Column(name = "status")
+	private String status;
+	
 	public Long getId() {
 		return id;
 	}
@@ -86,4 +89,12 @@ public class Sinav {
 		this.sessions = sessions;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 }

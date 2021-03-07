@@ -1,6 +1,5 @@
 package com.acikoleji.adminpanel.repository;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -24,18 +23,16 @@ class SinavRepositoryTest2 {
 	@Autowired
 	private SinavRepository sinavRepository;
 	
-	//Yok ise dbde tarih alanini güncelle
 	@Test
 	void activeSinavOlmali() {
 		
-		List<Sinav> findActiveExamns = sinavRepository.findActiveExamns(LocalDate.now());
+		List<Sinav> findActiveExamns = sinavRepository.findByStatusNot("P");
 		findActiveExamns.stream().map(s -> s.getTipi()).forEach(System.out::println);
 		
 	}
 	
 	@Test
 	void activeSinavUzerindeOgrenciOlmali() {
-		
 		Sinav sinav = sinavRepository.findByTipi("Burs");
 		sinav.getStudents().stream().map(s -> s.getName()).forEach(System.out::println);
 		

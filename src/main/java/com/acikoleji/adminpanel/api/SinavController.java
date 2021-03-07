@@ -1,6 +1,5 @@
 package com.acikoleji.adminpanel.api;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,12 +38,12 @@ public class SinavController {
 	
 	@GetMapping("/active")
 	public List<SınavDTO> getActiveExams() {
-		return sinavService.findActiveExamns(LocalDate.now());
+		return sinavService.findActiveExamns();
 	}
 	
 	@GetMapping("/activeType")
 	public List<String> getActiveExamTypes() {
-		return sinavService.findActiveExamns(LocalDate.now()).stream()
+		return sinavService.findActiveExamns().stream()
 				.map(s -> s.getTipi())
 				.collect(Collectors.toList());
 	}
